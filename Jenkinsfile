@@ -27,6 +27,4 @@ pipeline {
 			echo "Job Failed"
 		}
 	}
-
-
 }
