@@ -6,19 +6,27 @@ pipeline {
 				echo "Build"
 			}
 		}
-	
-	
 		stage('Test'){
 			steps{
 				echo "Test"
 			}
 		}
-	
-	
 		stage('Integration Test'){
 			steps{
 				echo "Integration Test"
 			}
 		}
+	} post {
+		always {
+			echo "Finished"
+		}
+		success {
+			echo "Job Success"
+		}
+		failure {
+			echo "Job Failed"
+		}
 	}
+
+
 }
