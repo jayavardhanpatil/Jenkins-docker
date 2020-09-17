@@ -39,7 +39,7 @@ pipeline {
 		stage('Build docker Image'){
 			steps{
 				script {
-					dockerImage = docker.build("jayavardhanpatil/first-dev_ops:")
+					dockerImage = docker.build("jayavardhanpatil/first-dev_ops:0.0.1")
 				}
 			}
 		}
