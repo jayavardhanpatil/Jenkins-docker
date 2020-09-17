@@ -29,6 +29,31 @@ pipeline {
 				sh "mvn failsafe:integration-test failsafe:verify" 
 			}
 		}
+
+		stage('Package'){
+			steps{
+				sh "mvn package -DskipTests" 
+			}
+		}
+
+		stage('Build docker Image'){
+			steps{
+				dockerImage = docker.build("jayavardhanpatil/first-devOps:${env.BUILD_TAG}")
+			}
+		}
+
+		stage('Push docker Image'){
+			steps{
+				docker.wiRegistry('','6f86982d-2a54-4950-a02e-643221ef8364'){
+					dockerImage.push();
+					dockerImage.push('latest');
+				}
+				
+
+			}
+		}
+
+		
 	} 
 	post {
 		always {
