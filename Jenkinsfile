@@ -19,16 +19,16 @@ pipeline {
 				sh "mvn clean compile"
 			}
 		}
-		stage('Test'){
-			steps{
-				sh "mvn test"
-			}
-		}
-		stage('Integration Test'){
-			steps{
-				sh "mvn failsafe:integration-test failsafe:verify" 
-			}
-		}
+		// stage('Test'){
+		// 	steps{
+		// 		sh "mvn test"
+		// 	}
+		// }
+		// stage('Integration Test'){
+		// 	steps{
+		// 		sh "mvn failsafe:integration-test failsafe:verify" 
+		// 	}
+		// }
 
 		stage('Package'){
 			steps{
@@ -39,7 +39,7 @@ pipeline {
 		stage('Build docker Image'){
 			steps{
 				script {
-					dockerImage = docker.build("jayavardhanpatil/first-devOps:${env.BUILD_TAG}")
+					dockerImage = docker.build("jayavardhanpatil/first-dev_ops:")
 				}
 			}
 		}
