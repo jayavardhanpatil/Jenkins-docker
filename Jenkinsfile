@@ -47,7 +47,7 @@ pipeline {
 		stage('Push docker Image'){
 			steps{
 				script {
-					docker.wiRegistry('','6f86982d-2a54-4950-a02e-643221ef8364'){
+					docker.wiRegistry('','dockerhub'){
 					dockerImage.push();
 					dockerImage.push('latest');
 				}
